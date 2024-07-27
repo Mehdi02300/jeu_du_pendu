@@ -12,6 +12,8 @@ const imagePendu = document.querySelector('.image');
 const motCache = document.querySelector('.motCache');
 const message = document.querySelector('.message');
 const canvas = document.querySelector('.confetti');
+const valider = document.querySelector('#valider');
+const choix = document.querySelector('#choix');
 const mauvaiseReponseMax = 6;
 let mauvaiseReponse = 0;
 let motATrouver = mots[Math.floor(Math.random() * mots.length)].toUpperCase();
@@ -34,6 +36,20 @@ for(let i = 65; i <= 90; i++) {
     });
     lettres.appendChild(button);
 }
+
+// Evenement lorsque l'utilisateur valider le mot entier
+valider.addEventListener('click', () => {
+    if(choix.value.toUpperCase() === motATrouver) {
+        message.textContent = 'Félicitations ! Vous avez trouvé le mot.';
+        message.classList.add('gagne');
+        confettis();
+        desactiverBoutons();
+    } else {
+        message.textContent = `Désolé, vous avez perdu. Le mot était ${motATrouver}.`;
+        message.classList.add('perdu');
+        desactiverBoutons();
+    }
+});
 
 // Fonction qui permet de voir si le mot contient la lettre ou non
 function devine(lettre) {
