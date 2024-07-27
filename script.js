@@ -45,9 +45,8 @@ valider.addEventListener('click', () => {
         confettis();
         desactiverBoutons();
     } else {
-        message.textContent = `Désolé, vous avez perdu. Le mot était ${motATrouver}.`;
-        message.classList.add('perdu');
-        desactiverBoutons();
+        mauvaiseReponse++;
+        imagePendu.src = `images/pendu${mauvaiseReponse}.png`;
     }
 });
 
